@@ -1,0 +1,140 @@
+{
+    "info": {
+      "name": "Movie Festival Backend API",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Health Check",
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8080/health"
+        }
+      },
+      {
+        "name": "Register User",
+        "request": {
+          "method": "POST",
+          "header": [{ "key": "Content-Type", "value": "application/json" }],
+          "body": {
+            "mode": "raw",
+            "raw": "{\"username\": \"user1\", \"password\": \"password123\"}"
+          },
+          "url": "http://localhost:8080/api/auth/register"
+        }
+      },
+      {
+        "name": "Login User",
+        "request": {
+          "method": "POST",
+          "header": [{ "key": "Content-Type", "value": "application/json" }],
+          "body": {
+            "mode": "raw",
+            "raw": "{\"username\": \"user1\", \"password\": \"password123\"}"
+          },
+          "url": "http://localhost:8080/api/auth/login"
+        }
+      },
+      {
+        "name": "Logout User",
+        "request": {
+          "method": "POST",
+          "header": [
+            { "key": "Authorization", "value": "Bearer <JWT_TOKEN>" }
+          ],
+          "url": "http://localhost:8080/api/auth/logout"
+        }
+      },
+      {
+        "name": "List Movies",
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8080/api/movies?page=1&limit=10"
+        }
+      },
+      {
+        "name": "Search Movies",
+        "request": {
+          "method": "GET",
+          "url": "http://localhost:8080/api/movies/search?q=action"
+        }
+      },
+      {
+        "name": "Track Movie View",
+        "request": {
+          "method": "POST",
+          "url": "http://localhost:8080/api/movies/1/view"
+        }
+      },
+      {
+        "name": "Vote for Movie",
+        "request": {
+          "method": "POST",
+          "header": [{ "key": "Authorization", "value": "Bearer <JWT_TOKEN>" }],
+          "url": "http://localhost:8080/api/auth/votes/1"
+        }
+      },
+      {
+        "name": "Unvote Movie",
+        "request": {
+          "method": "DELETE",
+          "header": [{ "key": "Authorization", "value": "Bearer <JWT_TOKEN>" }],
+          "url": "http://localhost:8080/api/auth/votes/1"
+        }
+      },
+      {
+        "name": "Get User Votes",
+        "request": {
+          "method": "GET",
+          "header": [{ "key": "Authorization", "value": "Bearer <JWT_TOKEN>" }],
+          "url": "http://localhost:8080/api/auth/votes"
+        }
+      },
+      {
+        "name": "Create Movie (Admin)",
+        "request": {
+          "method": "POST",
+          "header": [
+            { "key": "Authorization", "value": "Bearer <ADMIN_JWT_TOKEN>" },
+            { "key": "Content-Type", "value": "application/json" }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\"title\": \"Inception\", \"description\": \"A mind-bending thriller\", \"duration\": 148, \"artists\": \"Leonardo DiCaprio\", \"genres\": \"Action, Sci-Fi\", \"watch_url\": \"http://example.com/inception\"}"
+          },
+          "url": "http://localhost:8080/api/admin/movies"
+        }
+      },
+      {
+        "name": "Update Movie (Admin)",
+        "request": {
+          "method": "PUT",
+          "header": [
+            { "key": "Authorization", "value": "Bearer <ADMIN_JWT_TOKEN>" },
+            { "key": "Content-Type", "value": "application/json" }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\"title\": \"Inception 2\", \"description\": \"A sequel to the mind-bending thriller\", \"duration\": 150, \"artists\": \"Leonardo DiCaprio\", \"genres\": \"Action, Sci-Fi\", \"watch_url\": \"http://example.com/inception2\"}"
+          },
+          "url": "http://localhost:8080/api/admin/movies/1"
+        }
+      },
+      {
+        "name": "Get Most Viewed Movies (Admin)",
+        "request": {
+          "method": "GET",
+          "header": [{ "key": "Authorization", "value": "Bearer <ADMIN_JWT_TOKEN>" }],
+          "url": "http://localhost:8080/api/admin/movies/popular"
+        }
+      },
+      {
+        "name": "Get Most Viewed Genres (Admin)",
+        "request": {
+          "method": "GET",
+          "header": [{ "key": "Authorization", "value": "Bearer <ADMIN_JWT_TOKEN>" }],
+          "url": "http://localhost:8080/api/admin/genres/popular"
+        }
+      }
+    ]
+  }
